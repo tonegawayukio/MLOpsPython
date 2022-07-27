@@ -23,6 +23,9 @@ variables:
     value: basic
 
 steps:
+  - powershell: 'Write-Host (''##vso[task.setvariable variable=randval]'' + (Get-Random -Minimum 1 -Maximum 10).ToString())'
+    displayName: 'create random number and put in index'
+  
   - task: AzureResourceGroupDeployment@2
     inputs:
       azureSubscription: "$(AZURE_RM_SVC_CONNECTION)"
@@ -31,6 +34,11 @@ steps:
       location: $(LOCATION)
       templateLocation: "Linked artifact"
       csmFile: "$(Build.SourcesDirectory)/environment_setup/arm-templates/cloud-environment.json"
-      overrideParameters: "-baseName $(BASE_NAME) -location $(LOCATION) -workspace $(WORKSPACE_NAME) -sku $(WORKSPACE_SKU)"
+      overrideParameters: "-baseName $(BASE_NAME)$(randval) -location $(LOCATION) -workspace $(WORKSPACE_NAME) -sku $(WORKSPACE_SKU)"
       deploymentMode: "Incremental"
     displayName: "07272Deploy MLOps resources to Azure"
+    
+   
+    
+    
+    
