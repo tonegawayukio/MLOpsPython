@@ -49,13 +49,13 @@
     }
   },
   "variables": {
-    "amlWorkspaceName": "[concat(parameters('workspace'), uniqueString(utcNow()))]",
-    "storageAccountName": "[concat(parameters('storageAccount'), uniqueString(utcNow()))]",
+    "amlWorkspaceName": "[parameters('workspace')]",
+    "storageAccountName": "[parameters('storageAccount')]",
     "storageAccountType": "Standard_LRS",
-    "keyVaultName": "[concat(parameters('keyvault'), uniqueString(utcNow()))]",
+    "keyVaultName": "[parameters('keyvault')]",
     "tenantId": "[subscription().tenantId]",
-    "applicationInsightsName": "[concat(parameters('appInsights'), uniqueString(utcNow()))]",
-    "containerRegistryName": "[concat(parameters('acr'), uniqueString(utcNow()))]"
+    "applicationInsightsName": "[parameters('appInsights')]",
+    "containerRegistryName": "[parameters('acr')]"
   },
   "resources": [
     {
