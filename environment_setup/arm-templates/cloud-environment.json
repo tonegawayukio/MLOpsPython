@@ -121,7 +121,7 @@
     },
     {
       "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2018-11-19",
+      "apiVersion": "2022-05-01",
       "name": "[variables('amlWorkspaceName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
